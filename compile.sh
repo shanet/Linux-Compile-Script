@@ -1,5 +1,6 @@
 #! /bin/bash
 # Shane Tully
+# Version 1.1
 # Modified from https://wiki.ubuntu.com/KernelTeam/GitKernelBuild
 
 function printLine {
@@ -57,6 +58,11 @@ echo -e "done.\n"
 printLine 27
 echo -en "Ready to compile kernel. Make any custom config changes before going on. Enter to continue. "
 read ready
+
+# Get the current time so we can time the compile
+START=$(date +%s)
+
+# Compile it!
 CONCURRENCY_LEVEL=`getconf _NPROCESSORS_ONLN` fakeroot make-kpkg --initrd --append-to-version=-custom kernel_image kernel_headers
 
 # Go back to the previous directory
@@ -64,5 +70,8 @@ cd -
 
 echo -e "\n\n\n\n"
 printLine 27
-echo -e "Kernel compile finished. Use dpkg to install the\nkernel packages at will. Bye!"
+echo -e "Kernel compile finished. Use dpkg to install the\nkernel packages at will."
+echo -n "Time to compile: "
+echo -n "scale=3;  ($(date +%s) - $START) / 60" | bc
+echo " minutes. Bye!"
 exit
