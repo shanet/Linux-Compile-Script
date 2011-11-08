@@ -1,0 +1,5 @@
+1.1:
+   - Added timing of kernel compile (in minutes)
+
+1.0:
+   - Initial release
