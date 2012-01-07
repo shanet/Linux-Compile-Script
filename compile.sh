@@ -65,13 +65,14 @@ START=$(date +%s)
 # Compile it!
 CONCURRENCY_LEVEL=`getconf _NPROCESSORS_ONLN` fakeroot make-kpkg --initrd --append-to-version=-custom kernel_image kernel_headers
 
+# Get finished time and calculate how many minutes the compile took
+TIME=$(echo "scale=3;  ($(date +%s) - $START) / 60" | bc)
+
 # Go back to the previous directory
 cd -
 
 echo -e "\n\n\n\n"
 printLine 27
 echo -e "Kernel compile finished. Use dpkg to install the\nkernel packages at will."
-echo -n "Time to compile: "
-echo -n "scale=3;  ($(date +%s) - $START) / 60" | bc
-echo " minutes. Bye!"
+echo "Time to compile: " $TIME " minutes. Bye!"
 exit
