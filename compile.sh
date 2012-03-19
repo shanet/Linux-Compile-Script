@@ -26,7 +26,7 @@ else
 fi
 
 # Print confirmation of directory
-echo -en "\nUsing directory \"" $directory "\". Enter to begin. "
+echo -en "\nUsing directory \"$directory\". Enter to begin. "
 read junk
 
 # cd to given directory
@@ -40,7 +40,7 @@ if [ ! -f "Makefile" ]; then
 fi
 
 echo -en "\nCopying current kernel config..."
-cp /boot/config-$(uname -r) .config
+#cp /boot/config-$(uname -r) .config
 echo -e "done."
 
 echo -en "\nUpdating config file to defaults..."
