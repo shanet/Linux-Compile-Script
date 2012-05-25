@@ -15,7 +15,7 @@ clear
 printLine 27
 echo -e "\t\tLinux Compile Script"
 printLine 27
-echo -e "\nThis script will compile the Linux kernel into a .deb package for use on Debian based systems. Ctrl + C to canel at any time."
+echo -e "\nThis script will compile the Linux kernel source into a .deb package for use on Debian based systems.\nEnsure the full kernel source is in the directory specified below.\nCtrl + C to canel at any time."
 
 # If given a kernel source directory, cd to it. If not, assume the source is in the working directory.
 if [ $1 ]; then
